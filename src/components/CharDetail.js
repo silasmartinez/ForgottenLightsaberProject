@@ -1,9 +1,9 @@
 import React from 'react';
-import { useHttp, useMultiHttp } from '../utils/fetchHook'
+import { useFetch } from '../utils/fetchHook'
 import { render } from '@testing-library/react';
 
 const CharDetail = props => {
-    const [isLoading, fetchedData] = useMultiHttp(props.movies, props.movies)
+    const [isLoading, fetchedData] = useFetch(props.movies, props.movies)
 
     let content = <p>Loading movie list...</p>;
 

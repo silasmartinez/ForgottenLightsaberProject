@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 
-import { useHttp } from '../utils/fetchHook';
+import { useFetch } from '../utils/fetchHook';
 import CharDetail from './CharDetail';
 
 const Character = props => {
 
-    const [isLoading, fetchedData] = useHttp(
+    const [isLoading, fetchedData] = useFetch(
         'https://swapi.co/api/people/' + props.selectedChar,
         [props.selectedChar]
     );
