@@ -32,7 +32,8 @@ const App = props => {
 
           <button onClick={charSelectHandler.bind(this)}>Get New Character</button>
           <Character selectedChar={selectedCharacter} />
-          <p>What color lightsaber did they create?</p>
+          <p>Many of our favorite characters inherited their first lightsaber.</p>
+          <p>What color lightsaber did they actually build?</p>
 
           <button onClick={colorHandler.bind(this, 'none')}>No Lightsaber</button>
           <button onClick={colorHandler.bind(this, 'red')}>Red Lightsaber</button>
