@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
 import './App.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Character from './components/Character';
-
+import { colorCreated } from './utils/colorCheck'
 let getRandomInt = max => {
   return Math.floor(Math.random() * Math.floor(max)) + 1;
 }
 
+toast.configure()
+
 const App = props => {
 
-  const [selectedCharacter, setSelectedCharacter] = useState(getRandomInt(87));
-  const [lightsaberColor, setLightsaberColor] = useState('light');
+  const [selectedCharacter, setSelectedCharacter] = useState(getRandomInt(88));
 
   const colorHandler = color => {
-    setLightsaberColor(color);
+    colorCreated(selectedCharacter, color) ?
+      toast.success('Correct!') && setSelectedCharacter(getRandomInt(88)) :
+      toast.error('Sorry, try again.')
   };
 
   const charSelectHandler = event => {
-    setSelectedCharacter(getRandomInt(87));
+    setSelectedCharacter(getRandomInt(88));
   };
 
   const content = (
@@ -34,6 +39,7 @@ const App = props => {
           <button onClick={colorHandler.bind(this, 'blue')}>Blue Lightsaber</button>
           <button onClick={colorHandler.bind(this, 'gold')}>Gold Lightsaber</button>
           <button onClick={colorHandler.bind(this, 'green')}>Green Lightsaber</button>
+          <button onClick={colorHandler.bind(this, 'purple')}>Purple Lightsaber</button>
         </header>
       </div >
     </React.Fragment>

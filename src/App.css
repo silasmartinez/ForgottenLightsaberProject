@@ -31,3 +31,10 @@
 ul {
   list-style-type: none;
 }
+
+button {
+  border-radius: 5px;
+  background-color: #282c34;
+  border-color: #80FFFF;
+  color: #80FFFF;
+}

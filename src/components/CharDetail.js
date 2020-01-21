@@ -1,6 +1,5 @@
 import React from 'react';
 import { useFetch } from '../utils/fetchHook'
-import { render } from '@testing-library/react';
 
 const CharDetail = props => {
     const [isLoading, fetchedData] = useFetch(props.movies, props.movies)
