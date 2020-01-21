@@ -5,7 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Character from './components/Character';
 import { colorCreated } from './utils/colorCheck'
-let getRandomInt = max => {
+
+const getRandomInt = max => {
   return Math.floor(Math.random() * Math.floor(max)) + 1;
 }
 
@@ -14,11 +15,23 @@ toast.configure()
 const App = props => {
 
   const [selectedCharacter, setSelectedCharacter] = useState(getRandomInt(88));
+  const [playerScore, setPlayerScore] = useState(0)
+
+  const correctColor = () => {
+    toast.success('Correct!')
+    setPlayerScore(playerScore + 1)
+    setSelectedCharacter(getRandomInt(88))
+  }
+
+  const incorrectColor = () => {
+    setPlayerScore(playerScore - 1)
+    toast.error('Sorry, try again.')
+  }
 
   const colorHandler = color => {
     colorCreated(selectedCharacter, color) ?
-      toast.success('Correct!') && setSelectedCharacter(getRandomInt(88)) :
-      toast.error('Sorry, try again.')
+      correctColor() :
+      incorrectColor()
   };
 
   const charSelectHandler = event => {
@@ -29,7 +42,7 @@ const App = props => {
     <React.Fragment>
       <div className="App" >
         <header className="App-header">
-
+          <p>Your score: {playerScore}</p>
           <button onClick={charSelectHandler.bind(this)}>Get New Character</button>
           <Character selectedChar={selectedCharacter} />
           <p>Many of our favorite characters inherited their first lightsaber.</p>
